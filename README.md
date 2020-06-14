@@ -16,3 +16,6 @@ mvn clean package -Dmaven.test.skip=true -P prod
 
 #单独编译某一个module 依赖的module也会编译
 mvn clean package -Dmaven.test.skip=true -P test -pl xxx -am
+
+#启动命令
+java -jar fund-0.0.1-SNAPSHOT.jar --spring.profiles.active=test

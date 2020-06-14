@@ -1,0 +1,37 @@
+server:
+  port: 8084
+  # session-timeout: 1000000 #用户回话session过期时间，以秒为单位
+  tomcat:
+    uri-encoding: UTF-8 #配置Tomcat编码，默认为UTF-8
+    compression: on #Tomcat是否开启压缩，默认为关闭
+    disableUploadTimeout: false
+    accesslog:
+      directory: c:/pingan/log/
+      enabled: true
+      pattern: '%{ip}s %{userName}s %t "%r" %s %b %T'
+      file-date-format: yyyy-MM-dd
+      prefix: access_log.
+      suffix: .log
+
+spring:
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/databaseName
+    username: root
+    password: root
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+# 日志地址
+logging:
+  config: classpath:logback.xml
+  file:
+    path: d:/log/
+
+# http ip地址配置
+system:
+  http:
+

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- 日志地址 -->
+	<property name="LOG_DIR" value="${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}" />
+
+	<!-- 控制台输出 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>info</level>
+        </filter>
+	    <encoder>
+	        <pattern><![CDATA[
+            %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} --- %msg%n
+	          ]]></pattern>
+	    </encoder>
+	</appender>
+	
+	
+	<!-- 控制台输出 -->
+	<appender name="STDERR" class="ch.qos.logback.core.ConsoleAppender">
+	        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+	    <encoder>
+	        <pattern><![CDATA[
+					%-20(%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread]) %-5level %logger{80}[%L] - %msg%n
+	          ]]></pattern>
+	    </encoder>
+	</appender>
+	
+	<!-- 文件日志输出 -->
+	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <file>${LOG_DIR}/fund.log</file>
+	    <param name="append" value="true"/>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	    	<!-- 日志文件输出的文件名 -->
+	        <fileNamePattern>${LOG_DIR}/web.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+	        <!-- 日志文件保留天数 -->
+	        <MaxHistory>30</MaxHistory>
+	    </rollingPolicy>
+	    <encoder>
+	    	<!-- 格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+	        <pattern><![CDATA[
+					%-20(%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread]) %-5level %logger{80}[%L] - %msg%n
+	          ]]></pattern>
+	    </encoder>
+		<!--日志文件最大的大小-->
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>50MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+	<logger name="org.mybatis" level="INFO" additivity="false">
+        <appender-ref ref="STDERR"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="file"/>
+    </logger>
+
+    <logger name="java.sql" level="INFO" additivity="false">
+        <appender-ref ref="STDERR"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="file"/>
+    </logger>
+
+    <logger name="org.springframework.jdbc" level="INFO" additivity="false">
+        <appender-ref ref="STDERR"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="file"/>
+    </logger>
+	<logger name="org.liu.fund.dao.mapper" level="DEBUG"/>
+
+	<!-- 日志级别  -->
+	<root>
+	    <level value="INFO"/>
+		<appender-ref ref="STDERR"/>
+	    <appender-ref ref="STDOUT"/>
+	    <appender-ref ref="file"/>
+	</root>
+</configuration>

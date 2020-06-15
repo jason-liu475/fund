@@ -21,7 +21,7 @@ public class FundDataCollectionTask {
 	@Autowired
 	private SysTaskService sysTaskService;
 
-	//@Scheduled(fixedRate = 10 * 60 * 1000)
+	@Scheduled(fixedRate = 10 * 60 * 1000)
 	//@Scheduled(cron = "0 0 0 * * ?")
 	public void collectionCompanyData(){
 		int retryCount = 0;
@@ -38,7 +38,7 @@ public class FundDataCollectionTask {
 			sysTaskService.finishTask(sysTaskModel);
 		}
 	}
-	//@Scheduled(fixedRate = 10 * 60 * 1000)
+	@Scheduled(fixedRate = 10 * 60 * 1000)
 	//@Scheduled(cron = "0 0 23 * * ?")
 	public void collectionAllFundData(){
 		int retryCount = 0;
@@ -55,7 +55,7 @@ public class FundDataCollectionTask {
 			sysTaskService.finishTask(sysTaskModel);
 		}
 	}
-	//@Scheduled(fixedRate = 60 * 60 * 1000)
+	@Scheduled(fixedRate = 60 * 60 * 1000)
 	public void collectionFundRealTimeData(){
 		int retryCount = 0;
 		SysTaskModel sysTaskModel = null;

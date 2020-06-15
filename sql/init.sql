@@ -34,3 +34,5 @@ CREATE TABLE `fund_real_time_data` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+alter table sys_task add column `task_start_time` datetime default null comment '任务开始时间';
+alter table sys_task add column `task_end_time` datetime default null comment '任务结束时间';

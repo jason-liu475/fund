@@ -76,4 +76,28 @@ public class SysTaskServiceImpl extends ServiceImpl<SysTaskMapper, SysTaskModel>
 		this.save(sysTaskModel);
 		return sysTaskModel;
 	}
+
+	@Override
+	public SysTaskModel initCollectionFundSuspendPurchDataTask() {
+		SysTaskModel sysTaskModel = new SysTaskModel();
+		sysTaskModel.setTaskName(TaskEnum.FUNDSUSPENDPURCHDATA.getDesc());
+		sysTaskModel.setTaskCode(TaskEnum.FUNDSUSPENDPURCHDATA.getCode());
+		sysTaskModel.setIsFinish(FinishEnum.INIT.getCode());
+		sysTaskModel.setRetryCount(0);
+		sysTaskModel.setTaskStartTime(new Date());
+		this.save(sysTaskModel);
+		return sysTaskModel;
+	}
+
+	@Override
+	public SysTaskModel initCollectionFundSuspendRedeeData() {
+		SysTaskModel sysTaskModel = new SysTaskModel();
+		sysTaskModel.setTaskName(TaskEnum.FUNDSUSPENDREDEEDATA.getDesc());
+		sysTaskModel.setTaskCode(TaskEnum.FUNDSUSPENDREDEEDATA.getCode());
+		sysTaskModel.setIsFinish(FinishEnum.INIT.getCode());
+		sysTaskModel.setRetryCount(0);
+		sysTaskModel.setTaskStartTime(new Date());
+		this.save(sysTaskModel);
+		return sysTaskModel;
+	}
 }

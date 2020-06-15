@@ -20,8 +20,8 @@ import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
  * 代码生成器
  */
 public class MpGenerator {
-	final static String  dirPath = "C:\\code\\fund\\src\\main\\java";
-	final static String  xmlPath = "C:\\code\\fund\\src\\main\\resources\\mybatis\\mysql";
+	final static String  dirPath = "D:\\code\\fund\\src\\main\\java";
+//	final static String  xmlPath = "D:\\code\\fund\\src\\main\\resources\\mybatis\\mysql";
 	/**
 	 * <p>
 	 * MySQL 生成演示
@@ -69,7 +69,8 @@ public class MpGenerator {
 		dsc.setDriverName("com.mysql.cj.jdbc.Driver");
 		dsc.setUsername("root");//?serverTimezone=GMT%2B8
 		dsc.setPassword("cm9vdA==");//url: jdbc:mysql://localhost:3306/login?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true
-		dsc.setUrl("jdbc:mysql://192.168.1.13:3306/fundData?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai");
+//		dsc.setUrl("jdbc:mysql://192.168.1.13:3306/fundData?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true");
+		dsc.setUrl("jdbc:mysql://127.0.0.1:3306/fundData?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true");
 		mpg.setDataSource(dsc);
 
 		// 策略配置
@@ -78,7 +79,7 @@ public class MpGenerator {
 		// strategy.setCapitalMode(true);// 全局大写命名 ORACLE 注意
 		//strategy.setTablePrefix(new String[] { "tb_", "tsys_" });// 此处可以修改为您的表前缀
 		strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-		strategy.setInclude("fund_real_time_data"); // 需要生成的表
+		strategy.setInclude("fund_suspend"); // 需要生成的表
 		// strategy.setExclude(new String[]{"test"}); // 排除生成的表
 		// 自定义实体父类
 		// strategy.setSuperEntityClass("com.baomidou.demo.TestEntity");

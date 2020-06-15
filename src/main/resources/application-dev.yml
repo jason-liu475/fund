@@ -20,7 +20,8 @@ spring:
       ddl-auto: update
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.1.13:3306/fundData?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    #url: jdbc:mysql://192.168.1.13:3306/fundData?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://127.0.0.1:3306/fundData?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
     username: root
     password: cm9vdA==
     # 使用druid数据源
@@ -50,3 +51,12 @@ system:
       fundDetail: /pingzhongdata
       #基金详细信息
       fundRealTime: http://fundgz.1234567.com.cn/js/
+    juhe:
+      host: http://web.juhe.cn:8080
+      appKey: aa6cc8e479c084fe4663cba64e336143
+      #基金暂停申购
+      suspendPurch:
+        uri: /fund/suspend/purch
+      #基金暂停赎回
+      suspendRedee:
+        uri: /fund/suspend/redee

@@ -35,7 +35,7 @@ mybatis-plus:
 logging:
   config: classpath:logback.xml
   file:
-    path: d:/log/
+    path: /logs/
 
 # http ip地址配置
 system:

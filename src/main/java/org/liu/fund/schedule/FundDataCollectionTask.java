@@ -1,5 +1,6 @@
 package org.liu.fund.schedule;
 
+import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.liu.fund.dao.model.SysTaskModel;
 import org.liu.fund.service.FundDataCollectionService;
@@ -33,6 +34,7 @@ public class FundDataCollectionTask {
 			retryCount++;
 			fundDataCollectionService.retryCollectionCompanyData(sysTaskModel,retryCount);
 		}finally {
+			log.info("任务相关数据：{}", JSONObject.toJSONString(sysTaskModel));
 			sysTaskService.finishTask(sysTaskModel);
 		}
 	}
@@ -49,6 +51,7 @@ public class FundDataCollectionTask {
 			retryCount++;
 			fundDataCollectionService.retryCollectionAllFundData(sysTaskModel,retryCount);
 		}finally {
+			log.info("任务相关数据：{}", JSONObject.toJSONString(sysTaskModel));
 			sysTaskService.finishTask(sysTaskModel);
 		}
 	}
@@ -64,6 +67,41 @@ public class FundDataCollectionTask {
 			retryCount++;
 			fundDataCollectionService.retryCollectionFundRealTimeData(sysTaskModel,retryCount);
 		}finally {
+			log.info("任务相关数据：{}", JSONObject.toJSONString(sysTaskModel));
+			sysTaskService.finishTask(sysTaskModel);
+		}
+	}
+	@Scheduled(fixedRate = 30 * 60 * 1000)
+	//@Scheduled(cron = "0 0 8 * * ?")
+	public void collectionFundSuspendPurchData(){
+		int retryCount = 0;
+		SysTaskModel sysTaskModel = null;
+		try {
+			sysTaskModel = sysTaskService.initCollectionFundSuspendPurchDataTask();
+			fundDataCollectionService.fundCollectionFundSuspendPurchData(sysTaskModel);
+		}catch (Exception e){
+			log.error(e.getMessage());
+			retryCount++;
+			fundDataCollectionService.retryCollectionFundSuspendPurchData(sysTaskModel,retryCount);
+		}finally {
+			log.info("任务相关数据：{}", JSONObject.toJSONString(sysTaskModel));
+			sysTaskService.finishTask(sysTaskModel);
+		}
+	}
+	@Scheduled(fixedRate = 30 * 60 * 1000)
+	//@Scheduled(cron = "0 0 8 * * ?")
+	public void collectionFundSuspendRedeeData(){
+		int retryCount = 0;
+		SysTaskModel sysTaskModel = null;
+		try {
+			sysTaskModel = sysTaskService.initCollectionFundSuspendRedeeData();
+			fundDataCollectionService.fundCollectionFundSuspendRedeeData(sysTaskModel);
+		}catch (Exception e){
+			log.error(e.getMessage());
+			retryCount++;
+			fundDataCollectionService.retryCollectionFundSuspendRedeeData(sysTaskModel,retryCount);
+		}finally {
+			log.info("任务相关数据：{}", JSONObject.toJSONString(sysTaskModel));
 			sysTaskService.finishTask(sysTaskModel);
 		}
 	}

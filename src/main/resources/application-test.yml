@@ -50,3 +50,12 @@ system:
       fundDetail: /pingzhongdata
       #基金详细信息
       fundRealTime: http://fundgz.1234567.com.cn/js/
+    juhe:
+      host: http://web.juhe.cn:8080
+      appKey: aa6cc8e479c084fe4663cba64e336143
+      #基金暂停申购
+      suspendPurch:
+        uri: /fund/suspend/purch
+      #基金暂停赎回
+      suspendRedee:
+        uri: /fund/suspend/redee

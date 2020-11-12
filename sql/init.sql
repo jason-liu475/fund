@@ -34,3 +34,18 @@ CREATE TABLE `fund_real_time_data` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+alter table sys_task add column `task_start_time` datetime default null comment '任务开始时间';
+alter table sys_task add column `task_end_time` datetime default null comment '任务结束时间';
+CREATE TABLE `fund_suspend` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `fund_code` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '基金代码',
+  `fund_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '基金名称',
+  `suspend_date` varchar(32) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '暂停赎回日期',
+  `open_date` varchar(32) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '开放赎回日期',
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `batch_num` varchar(32) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '批次号',
+  `suspend_type` int DEFAULT NULL COMMENT '暂停类型 1:暂停申购 2:暂停赎回',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

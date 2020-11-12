@@ -1,12 +1,11 @@
 package org.liu.fund.service.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -14,15 +13,9 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.liu.fund.dao.model.FundCompanyModel;
-import org.liu.fund.dao.model.FundInfoModel;
-import org.liu.fund.dao.model.FundRealTimeDataModel;
-import org.liu.fund.dao.model.SysTaskModel;
-import org.liu.fund.service.FundCompanyService;
-import org.liu.fund.service.FundDataCollectionService;
-import org.liu.fund.service.FundInfoService;
-import org.liu.fund.service.FundRealTimeDataService;
-import org.liu.fund.service.SysTaskService;
+import org.liu.fund.common.enums.SuspendTypeEnum;
+import org.liu.fund.dao.model.*;
+import org.liu.fund.service.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

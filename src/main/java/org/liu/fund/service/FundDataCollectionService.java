@@ -13,4 +13,12 @@ public interface FundDataCollectionService {
 	void fundCollectionFundRealTimeData(SysTaskModel sysTaskModel);
 
 	void retryCollectionFundRealTimeData(SysTaskModel sysTaskModel, int retryCount);
+
+	void fundCollectionFundSuspendPurchData(SysTaskModel sysTaskModel);
+
+	void retryCollectionFundSuspendPurchData(SysTaskModel sysTaskModel, int retryCount);
+
+	void fundCollectionFundSuspendRedeeData(SysTaskModel sysTaskModel);
+
+	void retryCollectionFundSuspendRedeeData(SysTaskModel sysTaskModel, int retryCount);
 }

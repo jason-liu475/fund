@@ -10,6 +10,8 @@ import org.liu.fund.service.SysTaskService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 /**
  * <p>
  *  服务实现类
@@ -29,6 +31,7 @@ public class SysTaskServiceImpl extends ServiceImpl<SysTaskMapper, SysTaskModel>
 		sysTaskModel.setTaskCode(TaskEnum.COMPANYDATA.getCode());
 		sysTaskModel.setIsFinish(FinishEnum.INIT.getCode());
 		sysTaskModel.setRetryCount(0);
+		sysTaskModel.setTaskStartTime(new Date());
 		this.save(sysTaskModel);
 		return sysTaskModel;
 	}
@@ -37,6 +40,7 @@ public class SysTaskServiceImpl extends ServiceImpl<SysTaskMapper, SysTaskModel>
 	@Transactional(rollbackFor = Exception.class)
 	public void finishTask(SysTaskModel sysTaskModel) {
 		sysTaskModel.setIsFinish(FinishEnum.FINISHED.getCode());
+		sysTaskModel.setTaskEndTime(new Date());
 		this.updateById(sysTaskModel);
 	}
 
@@ -55,6 +59,7 @@ public class SysTaskServiceImpl extends ServiceImpl<SysTaskMapper, SysTaskModel>
 		sysTaskModel.setTaskCode(TaskEnum.FUNDDATA.getCode());
 		sysTaskModel.setIsFinish(FinishEnum.INIT.getCode());
 		sysTaskModel.setRetryCount(0);
+		sysTaskModel.setTaskStartTime(new Date());
 		this.save(sysTaskModel);
 		return sysTaskModel;
 	}
@@ -67,6 +72,31 @@ public class SysTaskServiceImpl extends ServiceImpl<SysTaskMapper, SysTaskModel>
 		sysTaskModel.setTaskCode(TaskEnum.FUNDREALTIMEDATA.getCode());
 		sysTaskModel.setIsFinish(FinishEnum.INIT.getCode());
 		sysTaskModel.setRetryCount(0);
+		sysTaskModel.setTaskStartTime(new Date());
+		this.save(sysTaskModel);
+		return sysTaskModel;
+	}
+
+	@Override
+	public SysTaskModel initCollectionFundSuspendPurchDataTask() {
+		SysTaskModel sysTaskModel = new SysTaskModel();
+		sysTaskModel.setTaskName(TaskEnum.FUNDSUSPENDPURCHDATA.getDesc());
+		sysTaskModel.setTaskCode(TaskEnum.FUNDSUSPENDPURCHDATA.getCode());
+		sysTaskModel.setIsFinish(FinishEnum.INIT.getCode());
+		sysTaskModel.setRetryCount(0);
+		sysTaskModel.setTaskStartTime(new Date());
+		this.save(sysTaskModel);
+		return sysTaskModel;
+	}
+
+	@Override
+	public SysTaskModel initCollectionFundSuspendRedeeData() {
+		SysTaskModel sysTaskModel = new SysTaskModel();
+		sysTaskModel.setTaskName(TaskEnum.FUNDSUSPENDREDEEDATA.getDesc());
+		sysTaskModel.setTaskCode(TaskEnum.FUNDSUSPENDREDEEDATA.getCode());
+		sysTaskModel.setIsFinish(FinishEnum.INIT.getCode());
+		sysTaskModel.setRetryCount(0);
+		sysTaskModel.setTaskStartTime(new Date());
 		this.save(sysTaskModel);
 		return sysTaskModel;
 	}

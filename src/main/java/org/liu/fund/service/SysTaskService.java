@@ -22,4 +22,8 @@ public interface SysTaskService extends IService<SysTaskModel> {
 	SysTaskModel initCollectionAllFundDataTask();
 
 	SysTaskModel initCollectionFundRealTimeDataTask();
+
+    SysTaskModel initCollectionFundSuspendPurchDataTask();
+
+	SysTaskModel initCollectionFundSuspendRedeeData();
 }

@@ -1,6 +1,7 @@
 package org.liu.fund.dao.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -44,6 +45,9 @@ public class SysTaskModel extends Model<SysTaskModel> {
     @ApiModelProperty(value = "重试次数")
     private Integer retryCount;
 
+    private Date taskStartTime;
+
+    private Date taskEndTime;
 
     @Override
     protected Serializable pkVal() {

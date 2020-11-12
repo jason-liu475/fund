@@ -9,6 +9,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -356,6 +357,8 @@ public class FundDataCollectionServiceImpl implements FundDataCollectionService 
 
 	private void dbSubmitFundSuspendData(List<FundSuspendModel> fundSuspendModelList) {
 		if(CollectionUtils.isNotEmpty(fundSuspendModelList)) {
+			Integer suspendType = fundSuspendModelList.get(0).getSuspendType();
+			fundSuspendService.remove(new UpdateWrapper<FundSuspendModel>().lambda().eq(FundSuspendModel::getSuspendType,suspendType));
 			fundSuspendService.saveBatch(fundSuspendModelList);
 		}
 	}

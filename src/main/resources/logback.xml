@@ -49,19 +49,19 @@
 			<MaxFileSize>50MB</MaxFileSize>
 		</triggeringPolicy>
 	</appender>
-	<logger name="org.mybatis" level="INFO" additivity="false">
+	<logger name="org.mybatis" level="DEBUG" additivity="false">
         <appender-ref ref="STDERR"/>
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="file"/>
     </logger>
 
-    <logger name="java.sql" level="INFO" additivity="false">
+    <logger name="java.sql" level="DEBUG" additivity="false">
         <appender-ref ref="STDERR"/>
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="file"/>
     </logger>
 
-    <logger name="org.springframework.jdbc" level="INFO" additivity="false">
+    <logger name="org.springframework.jdbc" level="DEBUG" additivity="false">
         <appender-ref ref="STDERR"/>
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="file"/>
@@ -70,7 +70,7 @@
 
 	<!-- 日志级别  -->
 	<root>
-	    <level value="INFO"/>
+	    <level value="DEBUG"/>
 		<appender-ref ref="STDERR"/>
 	    <appender-ref ref="STDOUT"/>
 	    <appender-ref ref="file"/>

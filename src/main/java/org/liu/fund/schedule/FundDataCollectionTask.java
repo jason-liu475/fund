@@ -38,8 +38,8 @@ public class FundDataCollectionTask {
 			sysTaskService.finishTask(sysTaskModel);
 		}
 	}
-	//@Scheduled(fixedRate = 10 * 60 * 1000)
-	@Scheduled(cron = "0 30/45 9-13 0 0 1/5")
+	@Scheduled(fixedRate = 10 * 60 * 1000)
+	//@Scheduled(cron = "0 30/45 09-15 ? * 2-6")
 	public void collectionAllFundData(){
 		int retryCount = 0;
 		SysTaskModel sysTaskModel = null;
@@ -55,7 +55,8 @@ public class FundDataCollectionTask {
 			sysTaskService.finishTask(sysTaskModel);
 		}
 	}
-	@Scheduled(fixedRate = 60 * 60 * 1000)
+	//@Scheduled(fixedRate = 60 * 60 * 1000)
+	@Scheduled(cron = "0 30/45 09-15 ? * 2-6")
 	public void collectionFundRealTimeData(){
 		int retryCount = 0;
 		SysTaskModel sysTaskModel = null;

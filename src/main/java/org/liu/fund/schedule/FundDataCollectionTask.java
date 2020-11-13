@@ -56,7 +56,7 @@ public class FundDataCollectionTask {
 		}
 	}
 	//@Scheduled(fixedRate = 60 * 60 * 1000)
-	@Scheduled(cron = "0 30/45 09-15 ? * 2-6")
+	@Scheduled(cron = "0 00/45 09-15 ? * 2-6")
 	public void collectionFundRealTimeData(){
 		int retryCount = 0;
 		SysTaskModel sysTaskModel = null;
